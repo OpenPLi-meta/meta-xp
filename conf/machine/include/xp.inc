@@ -1,14 +1,6 @@
 # We know about rtc
 MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc"
 
-MACHINE_ESSENTIAL_EXTRA_RDEPENDS = "\
-	xp-dvb-modules-${MACHINE} \
-	"
-
-MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS = "\
-	kernel-module-cdfs \
-	"
-
 KERNEL_MODULE_AUTOLOAD += "xfs"
 
 MACHINE_EXTRA_RRECOMMENDS = " \
@@ -16,24 +8,18 @@ MACHINE_EXTRA_RRECOMMENDS = " \
 	ntfs-3g \
 	"
 
-CHIPSET = "bcm7358"
-
 DVBMEDIASINK_CONFIG = "--with-wma --with-wmv --with-pcm --with-dts --with-eac3"
-
-TARGET_ARCH = "mipsel"
-DEFAULTTUNE ?= "mips32el"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-xp"
 
+IMAGE_FSTYPES += "ubi"
+UBI_VOLNAME = "rootfs"
+
+TARGET_ARCH = "mipsel"
+DEFAULTTUNE ?= "mips32el"
 KERNEL_IMAGETYPE = "vmlinux"
 KERNEL_OUTPUT = "${KERNEL_IMAGETYPE}"
 KERNEL_CONSOLE = "null"
-
-IMAGE_FSTYPES ?= "ubi"
-
-UBI_VOLNAME = "rootfs"
-MKUBIFS_ARGS = "-m 2048 -e 126976 -c 4096"
-UBINIZE_ARGS = "-m 2048 -p 128KiB"
 
 IMAGEDIR ?= "${MACHINE}"
 IMGDEPLOYDIR ?= "${DEPLOY_DIR_IMAGE}"
@@ -55,9 +41,9 @@ IMAGE_CMD_ubi_append = " \
 	rm -Rf ${IMAGEDIR}; \
 	"
 
-MACHINE_FEATURES += "alsa usbhost wlan 3dtv switchoff textlcd osdposition hdmicec ci"
+MACHINE_FEATURES += " alsa usbhost wlan 3dtv switchoff osdposition hdmicec"
 
 require conf/machine/include/tune-mips32.inc
-require conf/machine/include/xp-wifi.inc
+require conf/machine/include/xp-essential.inc
 
-MACHINE_KERNEL_PR = "r4"
+MACHINE_KERNEL_PR = "r1"

@@ -1,2 +1,2 @@
 # meta-xp
-Maxdigital XP1000
+XP BSP Layer
