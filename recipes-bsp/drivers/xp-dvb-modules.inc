@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 PV = "${KV}+${SRCDATE}"
 PR = "r1"
 
-SRC_URI = "http://downloads.mutant-digital.net/${MACHINE}/${MACHINE}-drivers-${KV}-${SRCDATE}.zip"
+SRC_URI = "http://downloads.openpli.org/archive/xp/${MACHINE}-drivers-${KV}-${SRCDATE}.zip"
 
 S = "${WORKDIR}"
 
