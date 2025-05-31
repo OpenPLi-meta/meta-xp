@@ -23,6 +23,9 @@ RPROVIDES:${KERNEL_PACKAGE_NAME}-image = "kernel-image-${KERNEL_VERSION}"
 
 SRC_URI += "http://downloads.openpli.org/archive/xp/linux-${PV}-${ARCH}.tar.gz;name=${ARCH} \
 	file://defconfig \
+	file://fix-multiple-defs-yyloc.patch \
+	file://fix-never-be-null_outside-array-bounds-gcc-12.patch \
+	file://fix-build-with-binutils-2.41.patch \
 	"
 
 S = "${WORKDIR}/linux-${PV}"
